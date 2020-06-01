@@ -1,0 +1,13 @@
+
+class Main {
+
+    /** Initializes a Space Invaders game and starts running it. */
+    function void main() {
+        var spaceInvaders game;
+        do spaceInvaders.newInstance();
+        let game = spaceInvaders.getInstance();
+        do game.run();
+        do game.dispose();
+        return;
+    }
+}
