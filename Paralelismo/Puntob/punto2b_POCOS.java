@@ -1,4 +1,4 @@
-package Punto2;
+package Puntob;
 
 import java.io.*;
 
@@ -7,13 +7,14 @@ public class punto2b_POCOS implements Runnable {
     int filaFinHilo;
     String nombre;
     String separator = ";";
-    String nombre_archivo = "ProyectoPunto2/paralelismo/DAT_ASCII_EURUSD_M1_2017_2019.csv";
+    String nombre_archivo;
     static double[] comparacionFinal = new double[8];
 
-    public punto2b_POCOS(String nombre, int filaInicioHilo, int filaFinHilo) {
+    public punto2b_POCOS(String nombre, int filaInicioHilo, int filaFinHilo, String nombre_archivo) {
         this.nombre = nombre;
         this.filaInicioHilo = filaInicioHilo;
         this.filaFinHilo = filaFinHilo;
+        this.nombre_archivo = nombre_archivo;
     }
 
     // Todo lo que se meta aquí se ejecutará por cada hilo creado

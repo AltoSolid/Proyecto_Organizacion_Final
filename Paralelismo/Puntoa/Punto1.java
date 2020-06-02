@@ -1,18 +1,18 @@
-package ProyectoPunto2.paralelismo;
+package Puntoa;
 
 import java.io.*;
 
 public class Punto1 {
     public static void main(String[] args) {
         try {
-            FileInputStream fstream = new FileInputStream("ProyectoPunto2/paralelismo/DAT_ASCII_EURUSD_M1_2017_2019.csv");
+            FileInputStream fstream = new FileInputStream(args[0]);
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             String strLine;
             String separator = ";";
 
             // Asignando los valores iniciales según la primera linea del archivo.
             String primerLineraArchivo = br.readLine();
-            String[] preciosIniciales = primerLineraArchivo.substring(16, strLine.length() - 2).split(separator);
+            String[] preciosIniciales = primerLineraArchivo.substring(16, primerLineraArchivo.length() - 2).split(separator);
 
             double precioMayorApertura;
             double precioMenorApertura;
@@ -80,7 +80,7 @@ public class Punto1 {
             System.out.println(String.format("Tiempo ejecución secuencial: %.18f segundos\n", seconds));
 
             // Solamente imprimir los valores bonitos.
-            /*System.out.println(String.format("Precio mayor de apertura: %.6f", precioMayorApertura));
+            System.out.println(String.format("Precio mayor de apertura: %.6f", precioMayorApertura));
             System.out.println(String.format("Precio mayor de Mayores: %.6f", precioMayorMayor));
             System.out.println(String.format("Precio mayor de clausura: %.6f", precioMayorClausura));
             System.out.println(String.format("Precio mayor de menores: %.6f", precioMayorMenor));
@@ -89,7 +89,7 @@ public class Punto1 {
             System.out.println(String.format("Precio menor de Mayores: %.6f", precioMenorMayor));
             System.out.println(String.format("Precio menor de clausura: %.6f", precioMenorClausura));
             System.out.println(String.format("Precio menor de menores: %.6f", precioMenorMenor));
-            */
+            
         } catch (IOException e) {
             System.out.println(e);
         }

@@ -1,4 +1,4 @@
-package Punto2;
+package Puntob;
 
 public class punto2bMain_POCOS {
     public static void main(String[] args) {
@@ -11,9 +11,9 @@ public class punto2bMain_POCOS {
         // Creacición de hilos
         Thread[] arreglito = new Thread[cantidad];
         for (int i =0; i < cantidad-1; i++){
-            arreglito[i]= new Thread(new punto2b_POCOS("Hilo "+ (i+1), separador*i, separador*(i+1)));
+            arreglito[i]= new Thread(new punto2b_POCOS("Hilo "+ (i+1), separador*i, separador*(i+1), args[0]));
         }
-        arreglito[cantidad-1] = new Thread(new punto2b_POCOS("Hilo "+ (cantidad), separador*(cantidad-1), separador*cantidad+residuo)); //Último que lee el residuo
+        arreglito[cantidad-1] = new Thread(new punto2b_POCOS("Hilo "+ (cantidad), separador*(cantidad-1), separador*cantidad+residuo, args[0])); //Último que lee el residuo
 
         for (int i=0; i< cantidad;i++){
             arreglito[i].start();

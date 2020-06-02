@@ -1,10 +1,10 @@
-package Punto3;
+package Puntoc;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
  
 public class CustomBlockingQueue {
- 
+	long tiempoinicial = System.nanoTime();
 	final Lock lock = new ReentrantLock();
  
 	// Conditions

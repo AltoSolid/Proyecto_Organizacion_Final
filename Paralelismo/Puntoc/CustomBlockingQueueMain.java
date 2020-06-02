@@ -1,12 +1,14 @@
-package Punto3;
+package Puntoc;
 
 import java.io.*;
 
 public class CustomBlockingQueueMain {
 	static int limiteLinea = 1116772;
-
+	public static String nombre_archivo;
 	public static void main(String[] args) {
+		nombre_archivo = args[0];
 
+		long tiempoinicial = System.nanoTime();
 		CustomBlockingQueue customBlockingQueue = new CustomBlockingQueue();
 		// Creating producer and consumer threads
 		CustomBlockingQueue.comparacionFinal[4] = 90;
@@ -26,7 +28,8 @@ public class CustomBlockingQueueMain {
 			System.out.println(e);
 		}
 		CustomBlockingQueue.imprimirResultadoFinal();
-		// consumer1.start(); #Aquí se queda esperando algo cuando hacemos más de un Thread. Revisar
+		// consumer1.start(); #Aquí se queda esperando algo cuando hacemos más de un
+		// Thread. Revisar
 		/*
 		 * Thread[] arreglito = new Thread[cantidad]; for (int i =0; i < cantidad; i++){
 		 * arreglito[i]= new Thread(new Consumer(customBlockingQueue)); }
@@ -36,13 +39,17 @@ public class CustomBlockingQueueMain {
 		 * try { //for (int i = 0; i < arreglito.length; i++) { // arreglito[i].join();
 		 * //} } catch (InterruptedException e) { System.out.println(e); }
 		 */
+		long tiempofinal = System.nanoTime();
 
+        long tiempototal = (tiempofinal - tiempoinicial);
+        double seconds = (double) tiempototal / 1_000_000_000.0;
+        System.out.println(String.format(": demora %.18f segundos\n", seconds));
 	}
 }
 
 class Master implements Runnable {
-	String nombre_archivo = "ProyectoPunto2/paralelismo/DAT_ASCII_EURUSD_M1_2017_2019.csv";
-
+	String nombre = CustomBlockingQueueMain.nombre_archivo;
+	//String nombre = "Paralelismo\\DAT_ASCII_EURUSD_M1_2017_2019.csv";
 	private CustomBlockingQueue customBlockingQueue;
 
 	public Master(CustomBlockingQueue customBlockingQueue) {
@@ -53,7 +60,7 @@ class Master implements Runnable {
 	public void run() {
 		String str = null;
 		try {
-			FileInputStream fstream = new FileInputStream(nombre_archivo);
+			FileInputStream fstream = new FileInputStream(nombre);
 			BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 			// Asignando los valores iniciales según la primera linea del archivo.
 			// String primerLineraArchivo = br.readLine();
