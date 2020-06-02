@@ -2,7 +2,7 @@ package Puntob;
 
 import java.io.*;
 
-public class punto2b_POCOS implements Runnable {
+public class punto2 implements Runnable {
     int filaInicioHilo;
     int filaFinHilo;
     String nombre;
@@ -10,7 +10,7 @@ public class punto2b_POCOS implements Runnable {
     String nombre_archivo;
     static double[] comparacionFinal = new double[8];
 
-    public punto2b_POCOS(String nombre, int filaInicioHilo, int filaFinHilo, String nombre_archivo) {
+    public punto2(String nombre, int filaInicioHilo, int filaFinHilo, String nombre_archivo) {
         this.nombre = nombre;
         this.filaInicioHilo = filaInicioHilo;
         this.filaFinHilo = filaFinHilo;

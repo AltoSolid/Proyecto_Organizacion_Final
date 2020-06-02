@@ -3,7 +3,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
  
-public class CustomBlockingQueue {
+public class Punto3 {
 	long tiempoinicial = System.nanoTime();
 	final Lock lock = new ReentrantLock();
  
@@ -12,7 +12,7 @@ public class CustomBlockingQueue {
 	final Condition consumeCond = lock.newCondition(); 
 	
 	// Array to store element for CustomBlockingQueue
-	final Object[] array = new Object[6];
+	final Object[] array = new Object[4];
 	int putIndex, takeIndex;
 	int count;
 	double precioMayorApertura;

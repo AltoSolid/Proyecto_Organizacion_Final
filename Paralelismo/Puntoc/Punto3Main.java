@@ -2,37 +2,37 @@ package Puntoc;
 
 import java.io.*;
 
-public class CustomBlockingQueueMain {
+public class Punto3Main {
 	static int limiteLinea = 1116772;
 	public static String nombre_archivo;
 	public static void main(String[] args) {
 		nombre_archivo = args[0];
 
 		long tiempoinicial = System.nanoTime();
-		CustomBlockingQueue customBlockingQueue = new CustomBlockingQueue();
+		Punto3 Punto3 = new Punto3();
 		// Creating producer and consumer threads
-		CustomBlockingQueue.comparacionFinal[4] = 90;
-		CustomBlockingQueue.comparacionFinal[5] = 90;
-		CustomBlockingQueue.comparacionFinal[6] = 90;
-		CustomBlockingQueue.comparacionFinal[7] = 90;
+		Punto3.comparacionFinal[4] = 90;
+		Punto3.comparacionFinal[5] = 90;
+		Punto3.comparacionFinal[6] = 90;
+		Punto3.comparacionFinal[7] = 90;
 		// int cantidad = 20;
-		Thread master = new Thread(new Master(customBlockingQueue));
+		Thread master = new Thread(new Master(Punto3));
 		master.start();
 
-		Thread consumer = new Thread(new Consumer(customBlockingQueue));
-		// Thread consumer1 = new Thread(new Consumer(customBlockingQueue));
+		Thread consumer = new Thread(new Consumer(Punto3));
+		// Thread consumer1 = new Thread(new Consumer(Punto3));
 		consumer.start();
 		try {
 			consumer.join();
 		} catch (InterruptedException e) {
 			System.out.println(e);
 		}
-		CustomBlockingQueue.imprimirResultadoFinal();
+		Punto3.imprimirResultadoFinal();
 		// consumer1.start(); #Aquí se queda esperando algo cuando hacemos más de un
 		// Thread. Revisar
 		/*
 		 * Thread[] arreglito = new Thread[cantidad]; for (int i =0; i < cantidad; i++){
-		 * arreglito[i]= new Thread(new Consumer(customBlockingQueue)); }
+		 * arreglito[i]= new Thread(new Consumer(Punto3)); }
 		 * 
 		 * for (int i=0; i< cantidad;i++){ arreglito[i].start(); }
 		 * 
@@ -48,12 +48,12 @@ public class CustomBlockingQueueMain {
 }
 
 class Master implements Runnable {
-	String nombre = CustomBlockingQueueMain.nombre_archivo;
+	String nombre = Punto3Main.nombre_archivo;
 	//String nombre = "Paralelismo\\DAT_ASCII_EURUSD_M1_2017_2019.csv";
-	private CustomBlockingQueue customBlockingQueue;
+	private Punto3 Punto3;
 
-	public Master(CustomBlockingQueue customBlockingQueue) {
-		this.customBlockingQueue = customBlockingQueue;
+	public Master(Punto3 Punto3) {
+		this.Punto3 = Punto3;
 	}
 
 	@Override
@@ -66,9 +66,9 @@ class Master implements Runnable {
 			// String primerLineraArchivo = br.readLine();
 			// int cont = 0;
 			try {
-				for (int i = 0; i < CustomBlockingQueueMain.limiteLinea; ++i) {
+				for (int i = 0; i < Punto3Main.limiteLinea; ++i) {
 					str = br.readLine();
-					customBlockingQueue.put(str);
+					Punto3.put(str);
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -83,17 +83,17 @@ class Master implements Runnable {
 }
 
 class Consumer implements Runnable {
-	private CustomBlockingQueue customBlockingQueue;
+	private Punto3 Punto3;
 
-	public Consumer(CustomBlockingQueue customBlockingQueue) {
-		this.customBlockingQueue = customBlockingQueue;
+	public Consumer(Punto3 Punto3) {
+		this.Punto3 = Punto3;
 	}
 
 	@Override
 	public void run() {
-		for (int i = 0; i < CustomBlockingQueueMain.limiteLinea; i++) { //
+		for (int i = 0; i < Punto3Main.limiteLinea; i++) { //
 			try {
-				customBlockingQueue.take();
+				Punto3.take();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
